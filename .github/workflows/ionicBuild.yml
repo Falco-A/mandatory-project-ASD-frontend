@@ -1,0 +1,31 @@
+name: Ionic Build CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build Job
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup-ionic
+        uses: coturiv/setup-ionic@v1
+        with:
+          cordova-version: 10
+          
+      - name: Install angular/cli
+        run: npm i -D -E @angular/cli
+
+      - name: Build for Android
+        run: ionic cordova build android --prod
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: ./platforms/android/app/build/outputs/apk/debug/app-debug.apk

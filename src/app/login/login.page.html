@@ -1,0 +1,33 @@
+<ion-content id="sign-in-content">
+  <ion-card class="card">
+    <ion-card-header>
+      <ion-label class="section-title">Inserisci il tuo username e la tua password</ion-label>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input required type="text" maxlength="30"
+                     placeholder="Inserisci il tuo username"
+                     [(ngModel)]="this.username">
+          </ion-input>
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input required type="password" maxlength="16"
+                     placeholder="Inserisci la tua password"
+                     [(ngModel)]="this.password">
+          </ion-input>
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        </ion-item>
+        <ion-button fill="outline" expand="block" color="secondary" class="confirm-button" shape="round"
+                    strong="true" (click)="login()"
+                    [disabled]="this.username == '' || this.password == ''">
+          <ion-label>Login</ion-label>
+        </ion-button>
+
+        <ion-item-divider></ion-item-divider>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
