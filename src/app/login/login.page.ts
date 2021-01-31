@@ -48,14 +48,13 @@ export class LoginPage implements OnInit {
                 this.userService.username = this.username;
                 this.navCtrl.navigateRoot('home');
                 this.menuCtrl.enable(true);
-                const toast = this.toastController.create({
+                const toast = await this.toastController.create({
                     message: 'Accesso effettuato con successo',
                     position: 'bottom',
                     duration: 2000,
                     color: 'secondary'
-                }).then(() =>
-                    toast.present()
-                );
+                });
+                toast.present();
             } else {
                 console.log('Errore');
             }
